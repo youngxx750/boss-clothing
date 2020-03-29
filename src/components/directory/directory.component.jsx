@@ -10,12 +10,14 @@ class Directory extends React.Component {
         super();
 
         this.state = {
+            count: 0,
             sections: [
                 {
                   title: 'hats',
                   imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                   id: 1,
-                  linkUrl: 'shop/hats'
+                  linkUrl: 'shop/hats',
+                  linkUrl: 'hats'
                 },
                 {
                   title: 'jackets',
@@ -48,11 +50,16 @@ class Directory extends React.Component {
 
         render() {
             return (
+                <>
                 <div className="directory-menu">
-                        {this.state.sections.map(({ title, imageUrl, size, id }) => (
-                            <MenuItem key={id} size={size} title={title} imageUrl={imageUrl} />
+                        {this.state.sections.map(({ id, ...sectionProps }) => (
+                            <MenuItem key={id} {...sectionProps} />
                         ))}
                 </div>
+                <div>
+
+                </div>
+                </>
             );
         }
 }
